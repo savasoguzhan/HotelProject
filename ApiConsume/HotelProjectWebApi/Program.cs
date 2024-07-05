@@ -31,6 +31,15 @@ builder.Services.AddScoped<ITestimonailDal, EFTestimonialDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("HotelApiCors", opts =>
+    {
+        opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+
 
 
 
@@ -45,7 +54,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("HotelApiCors");
 app.UseAuthorization();
 
 app.MapControllers();
