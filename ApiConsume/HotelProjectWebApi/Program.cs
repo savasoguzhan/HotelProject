@@ -3,6 +3,7 @@ using HotelProject.BussinessLayer.Concrete;
 using HotelProject.DAL.Abstract;
 using HotelProject.DAL.Concrete;
 using HotelProject.DAL.EF;
+using HotelProjectWebApi.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 
 builder.Services.AddScoped<ITestimonailDal, EFTestimonialDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 builder.Services.AddCors(opt =>

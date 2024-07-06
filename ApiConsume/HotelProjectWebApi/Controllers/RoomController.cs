@@ -1,7 +1,10 @@
-﻿using HotelProject.BussinessLayer.Abstract;
+﻿using AutoMapper;
+using HotelProject.BussinessLayer.Abstract;
+using HotelProject.DtoLayer.Dtos.RoomDto;
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace HotelProjectWebApi.Controllers
 {
@@ -12,10 +15,12 @@ namespace HotelProjectWebApi.Controllers
 
 
         private readonly IRoomService _roomService;
+        private readonly IMapper _mapper;
 
-        public RoomController(IRoomService RoomService)
+        public RoomController(IRoomService RoomService, IMapper mapper)
         {
             _roomService = RoomService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -34,9 +39,14 @@ namespace HotelProjectWebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddRoom(Room Room)
+        public IActionResult AddRoom(RoomAddDto roomAddDto)
         {
-            _roomService.TInsert(Room);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var values = _mapper.Map<Room>(roomAddDto);
+            _roomService.TInsert(values);
             return Ok();
         }
 
