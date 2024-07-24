@@ -31,6 +31,9 @@ builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonailDal, EFTestimonialDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 
+builder.Services.AddScoped<IAboutUs, EFAboutUsDal>();
+builder.Services.AddScoped<IAboutUsService, AboutUsManager>();
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
