@@ -34,6 +34,9 @@ builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<IAboutUs, EFAboutUsDal>();
 builder.Services.AddScoped<IAboutUsService, AboutUsManager>();
 
+builder.Services.AddScoped<IBookingDal, EFBookingDal>();
+builder.Services.AddScoped<IBookingService, BookingManager>();
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 

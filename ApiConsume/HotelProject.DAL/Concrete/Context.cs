@@ -23,5 +23,7 @@ namespace HotelProject.DAL.Concrete
         public DbSet<Testimonial> Testimonials { get; set; }
 
         public DbSet<AboutUs> AboutUs { get; set; }
+
+        public DbSet<Booking> Bookings { get; set; }
     }
 }
