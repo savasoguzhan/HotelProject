@@ -9,5 +9,6 @@ namespace HotelProject.DAL.Abstract
 {
     public interface IBookingDal : IGenericDal<Booking>
     {
+        void BookingStatusChangeAccept(Booking booking);
     }
 }

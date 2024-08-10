@@ -16,5 +16,13 @@ namespace HotelProject.DAL.EF
         {
             
         }
+
+        public void BookingStatusChangeAccept(Booking booking)
+        {
+            var context = new Context();
+             var values =context.Bookings.Where(x=>x.BookingId == booking.BookingId).FirstOrDefault();
+            values.Status = "Accept";
+            context.SaveChanges();
+        }
     }
 }
